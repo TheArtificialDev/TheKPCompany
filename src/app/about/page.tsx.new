@@ -1,0 +1,208 @@
+"use client";
+
+import HeroSection from "@/components/ui/HeroSection";
+import Section from "@/components/ui/Section";
+import Card from "@/components/ui/Card";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+export default function AboutPage() {
+  const believeItemsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const founderInfoRef = useRef<HTMLDivElement | null>(null);
+  const timelineRef = useRef<HTMLDivElement | null>(null);
+  const targetRef = useRef<(HTMLDivElement | null)[]>([]);
+  
+  // Initialize arrays
+  useEffect(() => {
+    believeItemsRef.current = [];
+    targetRef.current = [];
+  }, []);
+  
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Animate founder info section
+    if (founderInfoRef.current) {
+      gsap.from(founderInfoRef.current, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: founderInfoRef.current,
+          start: "top 70%",
+        }
+      });
+    }
+    
+    // Animate timeline items
+    if (timelineRef.current) {
+      const timelineItems = timelineRef.current.querySelectorAll('.timeline-item');
+      gsap.from(timelineItems, {
+        y: 30,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: timelineRef.current,
+          start: "top 75%",
+        }
+      });
+    }
+    
+    // Animate belief items
+    believeItemsRef.current.forEach((item, index) => {
+      if (item) {
+        gsap.from(item, {
+          x: index % 2 === 0 ? -20 : 20,
+          opacity: 0,
+          duration: 0.5,
+          delay: index * 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+          }
+        });
+      }
+    });
+    
+    // Target audience animation
+    targetRef.current.forEach((item, index) => {
+      if (item) {
+        gsap.from(item, {
+          scale: 0.9,
+          opacity: 0,
+          duration: 0.5,
+          delay: index * 0.1,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 85%",
+          }
+        });
+      }
+    });
+  }, []);
+
+  const whatWeBelieve = [
+    { text: "Save time ⏱️", id: 1 },
+    { text: "Save energy 🧠", id: 2 },
+    { text: "Just work 🛠️", id: 3 }
+  ];
+  
+  const targetAudience = [
+    { text: "Students fighting deadlines", id: 1 },
+    { text: "Writers chasing clarity", id: 2 },
+    { text: "Professionals managing chaos", id: 3 },
+    { text: "Creators craving time for their art", id: 4 }
+  ];
+  
+  const currentStatus = [
+    { text: "Built our first study assistant to help students crush exams faster", icon: "🛠️", id: 1 },
+    { text: "Launching our first public tool in Fall 2025", icon: "📈", id: 2 },
+    { text: "Running wishlists and signups to learn what you need most", icon: "📬", id: 3 },
+    { text: "Doing it all as a solo founder—from product to code to vision", icon: "🤝", id: 4 }
+  ];
+
+  return (
+    <>
+      <HeroSection
+        title="🧬 About TheKPCompany"
+        subtitle="Born from Frustration. Built for Flow. TheKPCompany was founded in 2024 with one simple goal: Cut the complexity. Keep the output."
+      />
+      
+      <Section title="👋 Meet the Founder">
+        <div className="comic-border bg-[#f8f7f3] p-8" ref={founderInfoRef}>
+          <div className="flex flex-col md:flex-row gap-8 items-center mb-8">
+            <div className="w-48 h-48 rounded-full comic-border bg-black relative overflow-hidden flex-shrink-0">
+              {/* Placeholder for founder image */}
+              <div className="absolute inset-0 flex items-center justify-center text-white font-heading text-5xl">
+                AK
+              </div>
+            </div>
+            <div>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-2">Abhishek Kumar</h2>
+              <p className="text-xl mb-4 font-heading">Student. Researcher. Developer. Builder.</p>
+              <p className="mb-6">
+                After six years of coding, publishing patents, writing books, and exploring the boundaries of tech, I hit a wall — the tools meant to help me were getting in my way.
+              </p>
+              <p>
+                So I did what builders do:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mb-4">
+                <li>I started creating tools that made my work simpler, faster, and lighter.</li>
+                <li>That collection of tools evolved into TheKPCompany — an AI-powered venture focused on making frictionless productivity available to everyone.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Section>
+      
+      <Section title="🚀 Where We Are Now">
+        <div className="comic-border bg-[#f8f7f3] p-8" ref={timelineRef}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {currentStatus.map((item) => (
+              <div key={item.id} className="timeline-item comic-border border-2 border-black p-6 hover:bg-white transition-all duration-300 comic-shadow">
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl">{item.icon}</span>
+                  <p>{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+      
+      <Section title="🧭 What We Believe">
+        <div className="comic-border bg-[#f8f7f3] p-8">
+          <p className="text-center text-xl mb-8">
+            We believe productivity shouldn't come with a manual.<br />
+            Your tools should:
+          </p>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+            {whatWeBelieve.map((item, index) => (
+              <div 
+                key={item.id}
+                ref={(el) => { if (believeItemsRef.current) believeItemsRef.current[index] = el; }}
+                className="comic-border p-6 bg-white text-center hover:transform hover:-translate-y-1 transition-all duration-300"
+              >
+                <p className="text-2xl font-heading">{item.text}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <div className="comic-border bg-black text-white p-6">
+              <p className="text-xl mb-2 font-heading">Every click, screen, and word we design is guided by one rule:</p>
+              <p className="text-3xl font-heading">No friction. All flow.</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+      
+      <Section title="🎯 TheKPCompany is For…">
+        <div className="comic-border bg-[#f8f7f3] p-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {targetAudience.map((item, index) => (
+              <div 
+                key={item.id}
+                ref={(el) => { if (targetRef.current) targetRef.current[index] = el; }}
+                className="comic-border border-2 border-black p-6 transition-all hover:comic-shadow duration-300 bg-white text-center"
+              >
+                <p className="font-heading">{item.text}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <p className="text-xl font-heading">If you're tired of being stuck, welcome home.</p>
+          </div>
+        </div>
+      </Section>
+    </>
+  );
+}

@@ -1,0 +1,49 @@
+/* Comic-style components */
+.comic-border {
+  border: 2px solid black !important;
+  border-radius: 12px !important;
+}
+  
+.comic-shadow {
+  box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 1) !important;
+  transition: all 0.3s ease !important;
+}
+  
+.comic-shadow:hover {
+  box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1) !important;
+  transform: translate(-3px, -3px) !important;
+}
+
+.hero-section {
+  min-height: 100vh !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 2.5rem 0 !important;
+}
+
+.page-section {
+  width: 100% !important;
+  padding: 4rem 1rem !important;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 12px !important;
+  font-weight: bold !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  border: 2px solid black !important;
+}
+
+.btn-primary {
+  background-color: black !important;
+  color: white !important;
+}
+
+.btn-secondary {
+  background-color: #e5e5e5 !important;
+  color: black !important;
+}

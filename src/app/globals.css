@@ -1,26 +1,328 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts are imported via next/font in layout.tsx */
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --border-radius: 12px;
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --secondary: #f8f7f3;
+  --secondary-foreground: #000000;
+  --accent: #000000;
+  --accent-foreground: #ffffff;
+  /* Font variables are set via next/font in layout.tsx */
+
+  /* Animation durations for testimonial carousel */
+  --animation-duration-1: 40s;
+  --animation-duration-2: 50s;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base styles */
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+button, a.btn, .btn, nav a, label, .font-medium {
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+/* Comic-style utility classes */
+.comic-border {
+  border: 2px solid black;
+  border-radius: 12px;
+}
+  
+.comic-shadow {
+  box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 1);
+  transition: all 0.3s ease;
+}
+  
+.comic-shadow:hover {
+  box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+  transform: translate(-3px, -3px);
+}
+
+/* Navbar hover effects */
+.nav-link-zoom {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-link-zoom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  transform: scale(0);
+  opacity: 0;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.nav-link-zoom:hover {
+  color: white;
+  transform: scale(1.15);
+}
+
+.nav-link-zoom:hover::before {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Layout components */
+.hero-section {
+  min-height: calc(100vh - 10rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 4rem;
+  margin-top: 7rem; /* Account for navbar height plus its top margin */
+  margin-bottom: 2rem;
+  background: #f8f7f3;
+}
+
+.page-section {
+  width: 100%;
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .page-section {
+    padding: 4rem 2rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.bg-secondary {
+  background-color: #ffffff;
+}
+
+/* Button styles */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: 2px solid black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: black;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #f8f7f3;
+  color: black;
+}
+
+/* Font class for specific usage */
+.font-edu-qld {
+  font-family: "Edu QLD Hand", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Table animations */
+.comparison-table {
+  position: relative;
+  transition: transform 0.4s ease;
+}
+
+.table-row-hover {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease-out;
+  transform-origin: center;
+}
+
+.table-row-hover:hover {
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.table-icon-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.highlight-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-cell::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.highlight-cell:hover::before {
+  opacity: 1;
+}
+
+/* Checkmark and X animations */
+.checkmark, .x-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  transform-origin: center;
+  will-change: transform, color;
+}
+
+.checkmark {
+  color: #22c55e;
+}
+
+.x-mark {
+  color: #ef4444;
+}
+
+.checkmark:hover, .x-mark:hover {
+  transform: scale(1.2);
+}
+
+/* Table container fixes */
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Prevent any table overflow issues */
+table {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Ensure cells don't cause overflow */
+td, th {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Testimonial Carousel Styles */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.testimonial-container {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  padding: 12px 0; /* Add padding to prevent shadow cutoff */
+}
+
+.testimonial-track {
+  display: flex;
+  width: fit-content;
+  animation: scroll var(--animation-duration-1) linear infinite;
+}
+
+.testimonial-track:hover {
+  animation-play-state: paused;
+}
+
+.testimonial-track-reverse {
+  display: flex;
+  width: fit-content;
+  animation: scroll-reverse var(--animation-duration-2) linear infinite;
+}
+
+.testimonial-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+.testimonial-group {
+  display: flex;
+  gap: 2rem; /* Consistent 2rem gap between cards */
+  margin-right: 2rem; /* Gap between groups */
+}
+
+.testimonial-card {
+  margin: 0.5rem 0; /* Vertical margin */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for better separation */
+}
+
+/* Form styling */
+input:focus, 
+textarea:focus, 
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.3);
+}
+
+input:disabled,
+textarea:disabled,
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
