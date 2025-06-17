@@ -4,9 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { RiMenuLine, RiCloseLine } from 'react-icons/ri';
-import { motion, AnimatePresence } from 'framer-motion';
 
-const Navbar = () => {
+const NavbarSimple = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -49,30 +48,6 @@ const Navbar = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
-  // Animation variants for menu items
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.07
-      }
-    },
-    exit: {
-      opacity: 0,
-      transition: {
-        staggerChildren: 0.05,
-        staggerDirection: -1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: -20, opacity: 0 },
-    visible: { y: 0, opacity: 1 },
-    exit: { y: -20, opacity: 0 }
-  };
-
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 py-4 px-6 bg-[#f8f7f3] comic-border mx-4 mt-4 transition-all duration-300 ${scrolled ? 'shadow-lg' : ''}`}>
       <div className="container mx-auto flex justify-between items-center">
@@ -101,10 +76,7 @@ const Navbar = () => {
             </div>
           ))}
         </nav>
-        <motion.div 
-          className="md:hidden text-black"
-          whileTap={{ scale: 0.95 }}
-        >
+        <div className="md:hidden text-black">
           <button 
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"} 
             className="p-2 comic-border comic-shadow hover:bg-gray-100 transition-all duration-300"
@@ -112,50 +84,39 @@ const Navbar = () => {
           >
             {isMenuOpen ? <RiCloseLine size={24} /> : <RiMenuLine size={24} />}
           </button>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Mobile Menu with AnimatePresence for exit animations */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div 
-            className="md:hidden bg-[#f8f7f3] comic-border mx-4 mt-2 p-6 absolute left-0 right-0 comic-shadow"
-            initial={{ opacity: 0, y: -10, height: 0 }}
-            animate={{ opacity: 1, y: 0, height: 'auto' }}
-            exit={{ opacity: 0, y: -10, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.nav 
-              className="flex flex-col space-y-3"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              {navItems.map((item) => (
-                <motion.div
-                  key={item.name}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.03, x: 5 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="overflow-hidden"
+      {/* Mobile Menu with CSS animations */}
+      {isMenuOpen && (
+        <div 
+          className="md:hidden bg-[#f8f7f3] comic-border comic-shadow mx-4 mt-2 p-6 absolute left-0 right-0 animate-slideDown"
+        >
+          <nav className="flex flex-col space-y-3">
+            {navItems.map((item, index) => (
+              <div
+                key={item.name}
+                className="transform transition-all duration-200 hover:scale-[1.03] hover:translate-x-1 active:scale-[0.97]"
+                style={{ 
+                  animationDelay: `${index * 50}ms`,
+                  animation: `slideDown 0.3s ease-out forwards ${index * 50}ms`
+                }}
+              >
+                <Link 
+                  href={item.path}
+                  className="font-heading font-medium py-3 px-5 block comic-border hover:bg-white transition-colors w-full flex items-center justify-between"
+                  onClick={() => setIsMenuOpen(false)}
                 >
-                  <Link 
-                    href={item.path}
-                    className="font-heading font-medium py-3 px-5 block comic-border hover:bg-white transition-colors w-full flex items-center justify-between"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span>{item.name}</span>
-                    <span className="text-xl">→</span>
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  <span>{item.name}</span>
+                  <span className="text-xl">→</span>
+                </Link>
+              </div>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
 
-export default Navbar;
+export default NavbarSimple;

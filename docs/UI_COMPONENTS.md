@@ -7,7 +7,7 @@ This document provides detailed information about the UI components used in TheK
 The website uses a component-based architecture with reusable UI components organized in two main categories:
 
 1. **Layout Components**: Components that form the page structure
-   - Navbar
+   - Navbar (with responsive hamburger menu)
    - Footer
 
 2. **UI Components**: Reusable UI elements
@@ -79,7 +79,7 @@ The design system relies on several custom utility classes defined in `globals.c
 - Zoom effect on hover for navigation links
 - Comic border styling
 
-#### Footer
+### Footer
 
 **Purpose**: Footer displayed at the bottom of every page.
 
@@ -309,3 +309,68 @@ All components are built with a mobile-first approach using Tailwind's responsiv
 3. **Additional variants**: More button and card variants
 4. **Enhanced accessibility**: Improve keyboard navigation and screen reader support
 5. **Component testing**: Add unit tests for all components
+
+## Navbar Component
+
+The Navbar component features a responsive design with a hamburger menu for mobile devices. There are two implementations available:
+
+### 1. Framer Motion Version (`Navbar.tsx`)
+
+The primary implementation uses Framer Motion for enhanced animations:
+
+```tsx
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Container animations for staggered effects
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.07 }
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      staggerChildren: 0.05,
+      staggerDirection: -1
+    }
+  }
+};
+
+// Menu item animations
+const itemVariants = {
+  hidden: { y: -20, opacity: 0 },
+  visible: { y: 0, opacity: 1 },
+  exit: { y: -20, opacity: 0 }
+};
+```
+
+### 2. CSS-Only Version (`NavbarSimple.tsx`)
+
+A fallback version that uses CSS animations instead of Framer Motion:
+
+```tsx
+// CSS animations using Tailwind utilities
+<div className="animate-slideDown">
+  {/* Mobile menu items with staggered animation */}
+  <div style={{ 
+    animationDelay: `${index * 50}ms`,
+    animation: `slideDown 0.3s ease-out forwards ${index * 50}ms`
+  }}>
+    {/* Menu item content */}
+  </div>
+</div>
+```
+
+### Hamburger Menu Features
+
+The hamburger menu includes these key features:
+
+- Toggle functionality for showing/hiding the mobile menu
+- Close on link click (navigation)
+- Close when clicking outside the menu
+- Smooth entrance and exit animations
+- Visual feedback (hover/active states)
+- Comic-style borders and shadows
+
+For complete details, see the [Navbar Component Documentation](./NAVBAR_COMPONENT.md).

@@ -18,7 +18,20 @@ Welcome to the documentation for TheKPCompany website. This documentation provid
 - Responsive design
 - Accessibility considerations
 
-### 3. [Email Signup System](./EMAIL_SIGNUP_SYSTEM.md)
+### 3. [Navbar Component](./NAVBAR_COMPONENT.md)
+- Desktop and mobile implementation
+- Hamburger menu functionality
+- Animation details
+- Accessibility features
+- Usage guidelines
+
+### 4. [Hamburger Menu Guide](./HAMBURGER_MENU_GUIDE.md)
+- Implementation details
+- Testing procedures
+- Troubleshooting common issues
+- Maintenance guidelines
+
+### 5. [Email Signup System](./EMAIL_SIGNUP_SYSTEM.md)
 - Architecture
 - Data flow
 - Database schema
@@ -28,7 +41,7 @@ Welcome to the documentation for TheKPCompany website. This documentation provid
 - Technical debt
 - Maintenance guide
 
-### 4. [Supabase Integration](./SUPABASE_INTEGRATION.md)
+### 6. [Supabase Integration](./SUPABASE_INTEGRATION.md)
 - Supabase setup
 - Database schema
 - Security implementation
@@ -39,7 +52,7 @@ Welcome to the documentation for TheKPCompany website. This documentation provid
 - Maintenance guide
 - Troubleshooting
 
-### 5. [Technical Decisions](./TECHNICAL_DECISIONS.md)
+### 7. [Technical Decisions](./TECHNICAL_DECISIONS.md)
 - Framework selection
 - Styling approach
 - TypeScript integration
@@ -51,7 +64,7 @@ Welcome to the documentation for TheKPCompany website. This documentation provid
 - Testing approach
 - Technical debt assessment
 
-### 6. [Production Plan](./PRODUCTION_PLAN.md)
+### 8. [Production Plan](./PRODUCTION_PLAN.md)
 - 7-phase implementation plan
 - Detailed tasks and subtasks
 - Security measures
