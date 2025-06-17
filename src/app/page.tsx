@@ -3,45 +3,23 @@ import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import StarRating from "@/components/ui/StarRating";
-import Testimonial from "@/components/ui/Testimonial";
+// import Testimonial from "@/components/ui/Testimonial";
 import SignupForm from "@/components/ui/SignupForm";
 import { RiBookLine, RiBookmarkLine, RiFileTextLine } from "react-icons/ri";
 
 export default function Home() {
-  const testimonials = [
+  // Example testimonials for future reference
+  const _testimonialExamples = [
     {
       author: "Alex Johnson",
       role: "Graduate Student",
       text: "StudyPal saved me 15+ hours of prep time for my finals. I uploaded my lecture notes and it organized everything perfectly.",
       rating: 5
-    },
-    {
-      author: "Thomas Chen",
-      role: "Software Engineer",
-      text: "The minimalist design is exactly what I needed. No bloat, no clutter—just the features I actually use. First AI tool that doesn't feel like homework to learn.",
-      rating: 5
-    },
-    {
-      author: "Priya Sharma",
-      role: "Content Creator",
-      text: "They built me a custom hashtag generator that actually understands my niche. I told them what wasn't working about other tools, and they fixed EXACTLY that.",
-      rating: 5
-    },
-    {
-      author: "James Wilson",
-      role: "High School Teacher",
-      text: "I had zero time to learn complicated tech. TheKPCompany's quiz generator was ready to use in minutes—no tutorial needed. My students' engagement jumped 40%.",
-      rating: 5
-    },
-    {
-      author: "Emma Thompson",
-      role: "Freelance Writer",
-      text: "Love that I could customize my writing workflow without coding knowledge. They listened to my friction points and designed around them. Writer's block? Gone.",
-      rating: 5
     }
   ];
   
-  const moreTestimonials = [
+  // More testimonial examples
+  const _moreTestimonialExamples = [
     {
       author: "Maria Rodriguez",
       role: "Marketing Director",

@@ -16,7 +16,7 @@ const disposableEmailDomains = [
 export interface SubscriptionResult {
   success: boolean;
   message: string;
-  data?: any;
+  data?: unknown;
 }
 
 export const subscriptionService = {
@@ -85,8 +85,7 @@ export const subscriptionService = {
         success: true,
         message: 'Thank you for signing up! We\'ll keep you updated on our latest news and features.',
         data
-      };
-    } catch (error) {
+      };    } catch (_error) {
       return {
         success: false,
         message: 'An unexpected error occurred. Please try again later.'

@@ -2,7 +2,7 @@
 
 import HeroSection from "@/components/ui/HeroSection";
 import Section from "@/components/ui/Section";
-import Card from "@/components/ui/Card";
+// import Card from "@/components/ui/Card";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

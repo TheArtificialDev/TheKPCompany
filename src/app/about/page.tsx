@@ -67,20 +67,21 @@ export default function AboutPage() {
       }
     });
   }, []);
-
   const whatWeBelieve = [
     { text: "Save time ⏱️", id: 1 },
     { text: "Save energy 🧠", id: 2 },
     { text: "Just work 🛠️", id: 3 }
   ];
   
-  const targetAudience = [
-    { text: "Students fighting deadlines", id: 1 },
-    { text: "Writers chasing clarity", id: 2 },
-    { text: "Professionals managing chaos", id: 3 },
-    { text: "Creators craving time for their art", id: 4 }
-  ];
-    const currentStatus = [
+  // Keeping this commented for future use
+  // const targetAudience = [
+  //   { text: "Students fighting deadlines", id: 1 },
+  //   { text: "Writers chasing clarity", id: 2 },
+  //   { text: "Professionals managing chaos", id: 3 },
+  //   { text: "Creators craving time for their art", id: 4 }
+  // ];
+
+  const currentStatus = [
     { text: "Built our first study assistant to help students crush exams faster", icon: "🛠️", id: 1 },
     { text: "Launching our first public tool in Fall 2025", icon: "📈", id: 2 },
     { text: "Running wishlists and signups to learn what you need most", icon: "📬", id: 3 },
