@@ -59,8 +59,22 @@ export default function Footer() {
           </button>
         </form>
       </div>
-      <div className="text-center text-xs text-light-gray mt-8">
-        Liberate. Create. Thrive. &copy; {new Date().getFullYear()} The KP Company
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mt-8">
+        <div className="text-center text-xs text-light-gray">
+          Liberate. Create. Thrive. &copy; {new Date().getFullYear()} The KP Company
+        </div>
+        <div className="flex flex-col gap-2 text-sm">
+          <span className="font-semibold">Contact</span>
+          <a href="mailto:info.thekp@gmail.com" className="hover:underline">info.thekp@gmail.com</a>
+          <div className="flex gap-4 mt-2">
+            <a href="https://x.com/TheKP_Company" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-electric-blue transition-colors">
+              {/* Twitter SVG icon */}
+            </a>
+            <a href="https://www.linkedin.com/company/thekpcompany/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-electric-blue transition-colors">
+              {/* LinkedIn SVG icon */}
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

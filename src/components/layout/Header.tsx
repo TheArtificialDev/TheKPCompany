@@ -1,6 +1,7 @@
 "use client";
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 const aiTools = [
   { name: 'Bookify', href: 'https://bookify.thekp.in' },
@@ -23,91 +24,99 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aiOpen, setAiOpen] = useState(false);
   const [everydayOpen, setEverydayOpen] = useState(false);
+  const [showNav, setShowNav] = useState(false);
+  // Timers for delayed close
+  const aiTimer = useRef<NodeJS.Timeout | null>(null);
+  const everydayTimer = useRef<NodeJS.Timeout | null>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setShowNav(true);
+      } else {
+        setShowNav(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    // Show nav if not on hero (e.g. on other pages)
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Helper functions for AI Tools dropdown
+  const handleAiMouseEnter = () => {
+    if (aiTimer.current) clearTimeout(aiTimer.current);
+    if (everydayTimer.current) clearTimeout(everydayTimer.current);
+    setAiOpen(true);
+    setEverydayOpen(false); // Close other dropdown immediately
+  };
+  const handleAiMouseLeave = () => {
+    aiTimer.current = setTimeout(() => setAiOpen(false), 200);
+  };
+
+  // Helper functions for Everyday Tools dropdown
+  const handleEverydayMouseEnter = () => {
+    if (everydayTimer.current) clearTimeout(everydayTimer.current);
+    if (aiTimer.current) clearTimeout(aiTimer.current);
+    setEverydayOpen(true);
+    setAiOpen(false); // Close other dropdown immediately
+  };
+  const handleEverydayMouseLeave = () => {
+    everydayTimer.current = setTimeout(() => setEverydayOpen(false), 200);
+  };
+
+  // Navigation items
+  const navItems = [
+    { name: 'AI Tools', href: '/ai-tools' },
+    { name: 'Everyday Tools', href: '/everyday-tools' },
+    { name: 'About', href: '/about' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' },
+  ];
 
   return (
-    <header className="w-full bg-deep-space text-white py-4 px-6 flex items-center justify-between shadow-sm relative z-50">
-      <div className="font-bold text-2xl tracking-tight">
-        <Link href="/">The KP Company</Link>
-      </div>
-      <nav className="hidden md:flex gap-8 text-lg font-medium items-center">
-        <div className="relative group">
-          <button
-            className="hover:text-electric-lime focus:text-electric-lime focus:outline-none"
-            aria-haspopup="true"
-            aria-expanded={aiOpen}
-            onMouseEnter={() => setAiOpen(true)}
-            onMouseLeave={() => setAiOpen(false)}
-            onFocus={() => setAiOpen(true)}
-            onBlur={() => setAiOpen(false)}
-          >
-            AI Tools
-          </button>
-          {aiOpen && (
-            <div className="absolute left-0 mt-2 w-48 bg-charcoal rounded shadow-lg py-2" onMouseEnter={() => setAiOpen(true)} onMouseLeave={() => setAiOpen(false)}>
-              {aiTools.map((tool) => (
-                <Link key={tool.name} href={tool.href} target={tool.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="block px-4 py-2 hover:bg-electric-lime/10 hover:text-electric-lime">
-                  {tool.name}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-        <div className="relative group">
-          <button
-            className="hover:text-electric-lime focus:text-electric-lime focus:outline-none"
-            aria-haspopup="true"
-            aria-expanded={everydayOpen}
-            onMouseEnter={() => setEverydayOpen(true)}
-            onMouseLeave={() => setEverydayOpen(false)}
-            onFocus={() => setEverydayOpen(true)}
-            onBlur={() => setEverydayOpen(false)}
-          >
-            Everyday Tools
-          </button>
-          {everydayOpen && (
-            <div className="absolute left-0 mt-2 w-56 bg-charcoal rounded shadow-lg py-2" onMouseEnter={() => setEverydayOpen(true)} onMouseLeave={() => setEverydayOpen(false)}>
-              {everydayTools.map((tool) => (
-                <Link key={tool.name} href={tool.href} target={tool.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="block px-4 py-2 hover:bg-electric-lime/10 hover:text-electric-lime">
-                  {tool.name}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-        <Link href="/about" className="hover:text-electric-lime">About</Link>
-        <Link href="/blog" className="hover:text-electric-lime">Blog</Link>
-        <Link href="/contact" className="hover:text-electric-lime">Contact</Link>
-      </nav>
-      <button
-        className="md:hidden text-white"
-        aria-label="Open navigation menu"
-        onClick={() => setMobileOpen((v) => !v)}
+    showNav ? (
+      <header
+        className={
+          "fixed left-1/2 top-8 transform -translate-x-1/2 z-50 transition-all duration-300 opacity-100 pointer-events-auto"
+        }
+        aria-hidden={!showNav}
+        style={{ width: 'min(96vw, 1100px)' }}
       >
-        <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-      {mobileOpen && (
-        <div className="absolute top-full left-0 w-full bg-charcoal text-white flex flex-col py-4 px-6 md:hidden shadow-lg z-50 animate-fade-in">
-          <Link href="/ai-tools" className="py-2 hover:text-electric-lime" onClick={() => setMobileOpen(false)}>AI Tools</Link>
-          <div className="pl-4">
-            {aiTools.slice(0, 3).map((tool) => (
-              <Link key={tool.name} href={tool.href} target={tool.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="block py-1 text-sm hover:text-electric-lime" onClick={() => setMobileOpen(false)}>
-                {tool.name}
+        <div className="w-full flex items-center justify-between relative">
+          <div className="font-bold text-2xl tracking-tight text-white drop-shadow-lg select-none">
+            <Link href="/">The KP Company</Link>
+          </div>
+          <nav className="hidden md:flex gap-2 text-lg font-medium items-center relative px-2 py-2 bg-white/20 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/30" style={{minHeight:'60px'}}>
+            {/* Frosted highlight for active tab */}
+            <div
+              className="absolute top-2 left-0 h-[44px] w-[120px] rounded-xl bg-white/60 shadow-lg backdrop-blur-2xl transition-all duration-300 ease-in-out z-0"
+              style={{
+                transform: `translateX(${(() => {
+                  const idx = navItems.findIndex(item => pathname.startsWith(item.href));
+                  return idx >= 0 ? idx * 124 : 0;
+                })()}px)`
+              }}
+            />
+            {navItems.map((item, idx) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`relative z-10 px-5 py-2 rounded-xl transition-colors duration-200 font-semibold ${pathname.startsWith(item.href) ? 'text-deep-space' : 'text-white/90 hover:text-electric-lime'}`}
+                style={{
+                  background: pathname.startsWith(item.href) ? 'rgba(255,255,255,0.7)' : 'transparent',
+                  boxShadow: pathname.startsWith(item.href) ? '0 2px 16px 0 rgba(255,255,255,0.15)' : undefined,
+                  backdropFilter: pathname.startsWith(item.href) ? 'blur(8px)' : undefined,
+                  transition: 'background 0.3s, color 0.3s',
+                }}
+              >
+                {item.name}
               </Link>
             ))}
-          </div>
-          <Link href="/everyday-tools" className="py-2 hover:text-electric-lime" onClick={() => setMobileOpen(false)}>Everyday Tools</Link>
-          <div className="pl-4">
-            {everydayTools.slice(0, 4).map((tool) => (
-              <Link key={tool.name} href={tool.href} target={tool.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="block py-1 text-sm hover:text-electric-lime" onClick={() => setMobileOpen(false)}>
-                {tool.name}
-              </Link>
-            ))}
-          </div>
-          <Link href="/about" className="py-2 hover:text-electric-lime" onClick={() => setMobileOpen(false)}>About</Link>
-          <Link href="/blog" className="py-2 hover:text-electric-lime" onClick={() => setMobileOpen(false)}>Blog</Link>
-          <Link href="/contact" className="py-2 hover:text-electric-lime" onClick={() => setMobileOpen(false)}>Contact</Link>
+          </nav>
         </div>
-      )}
-    </header>
+      </header>
+    ) : null
   );
 }
