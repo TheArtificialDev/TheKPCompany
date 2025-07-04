@@ -1,0 +1,15 @@
+:root {
+  --color-deep-space: #0A0A0B;
+  --color-electric-lime: #00FF88;
+  --color-neon-green: #39FF14;
+  --color-charcoal: #1C1C1E;
+  --color-smoke: #2C2C2E;
+  --color-white: #FFFFFF;
+  --color-light-gray: #8E8E93;
+  --color-electric-blue: #007AFF;
+  --color-amber: #FF9500;
+  --color-crimson: #FF3B30;
+
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+}
