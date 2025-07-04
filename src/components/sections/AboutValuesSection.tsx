@@ -31,15 +31,17 @@ const values = [
 
 export default function AboutValuesSection() {
   return (
-    <section className="py-16 px-6 bg-charcoal text-white">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-h2 font-semibold mb-10 text-center">Our Core Values</h2>
+    <section className="py-16 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-10 p-8 rounded-2xl bg-white/5 backdrop-blur-lg border-2 border-white/30">
+          <h2 className="text-h2 font-semibold text-white">Our Core Values</h2>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {values.map((v) => (
-            <div key={v.title} className="flex flex-col items-center p-6 rounded-lg bg-smoke/60 hover:bg-electric-lime/10 transition-all duration-300">
-              <div className="mb-3">{v.icon}</div>
-              <h3 className="text-h4 font-medium mb-2 text-white">{v.title}</h3>
-              <p className="text-body text-light-gray text-center">{v.desc}</p>
+            <div key={v.title} className="flex flex-col items-center p-6 rounded-xl bg-white/5 backdrop-blur-lg border-2 border-white/30 hover:bg-white/10 hover:border-electric-lime/50 transition-all duration-300 hover:scale-105">
+              <div className="mb-4 p-3 rounded-full bg-electric-lime/20">{v.icon}</div>
+              <h3 className="text-h4 font-semibold mb-3 text-electric-lime">{v.title}</h3>
+              <p className="text-body text-white/70 text-center leading-relaxed">{v.desc}</p>
             </div>
           ))}
         </div>

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center px-0 py-0 bg-gradient-to-br from-deep-space via-charcoal to-deep-space overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center items-center px-0 py-0 overflow-hidden">
       {/* Frosted glass effect container, 80% of viewport width and height, centered */}
       <div
         className="relative z-10 rounded-3xl bg-white/10 backdrop-blur-lg shadow-2xl flex flex-col items-center border border-white/20"
@@ -40,13 +40,6 @@ export default function HeroSection() {
             </Link>
           </div>
         </div>
-      </div>
-      {/* Animated floating shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-20 left-10 w-4 h-4 bg-electric-lime rounded-full opacity-60 animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-6 h-6 bg-neon-green rounded-full opacity-40 animate-pulse delay-1000"></div>
-        <div className="absolute bottom-32 left-20 w-3 h-3 bg-electric-blue rounded-full opacity-50 animate-pulse delay-500"></div>
-        <div className="absolute bottom-20 right-10 w-5 h-5 bg-electric-lime rounded-full opacity-30 animate-pulse delay-1500"></div>
       </div>
     </section>
   );

@@ -1,22 +1,24 @@
 export default function MissionVisionSection() {
   return (
-    <section className="py-16 px-6 bg-charcoal text-white">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-h2 font-semibold mb-6 text-center">Mission & Vision</h2>
-        <dl className="space-y-8">
-          <div>
-            <dt className="text-h4 font-medium">Mission</dt>
-            <dd className="text-body text-light-gray">
-              Empower people to focus on what matters by automating the mundane with smart AI tools.
+    <section className="py-16 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-10 p-8 rounded-2xl bg-white/5 backdrop-blur-lg border-2 border-white/30">
+          <h2 className="text-h2 font-semibold text-white">Mission & Vision</h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="p-8 rounded-xl bg-white/5 backdrop-blur-lg border-2 border-white/30">
+            <dt className="text-h3 font-semibold mb-4 text-electric-lime">Mission</dt>
+            <dd className="text-body-lg text-white/80 leading-relaxed">
+              Empower people to focus on what matters by automating the mundane with smart AI tools that enhance creativity and productivity.
             </dd>
           </div>
-          <div>
-            <dt className="text-h4 font-medium">Vision</dt>
-            <dd className="text-body text-light-gray">
-              A world where every creative mind is unshackled from drudgery, free to innovate, express, and grow.
+          <div className="p-8 rounded-xl bg-white/5 backdrop-blur-lg border-2 border-white/30">
+            <dt className="text-h3 font-semibold mb-4 text-electric-lime">Vision</dt>
+            <dd className="text-body-lg text-white/80 leading-relaxed">
+              A world where every creative mind is unshackled from drudgery, free to innovate, express, and grow without limitations.
             </dd>
           </div>
-        </dl>
+        </div>
       </div>
     </section>
   );

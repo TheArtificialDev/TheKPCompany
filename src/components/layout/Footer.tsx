@@ -1,78 +1,232 @@
 "use client";
+import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-charcoal text-light-gray py-8 px-6 mt-16">
-      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
-        <div>
-          <div className="font-bold text-white mb-2">Product Categories</div>
-          <ul>
-            <li><a href="/ai-tools" className="hover:text-electric-lime">AI Tools</a></li>
-            <li><a href="/everyday-tools" className="hover:text-electric-lime">Everyday Tools</a></li>
-          </ul>
-        </div>
-        <div>
-          <div className="font-bold text-white mb-2">Company</div>
-          <ul>
-            <li><a href="/about" className="hover:text-electric-lime">About</a></li>
-            <li><a href="/careers" className="hover:text-electric-lime">Careers</a></li>
-            <li><a href="/press-kit" className="hover:text-electric-lime">Press Kit</a></li>
-          </ul>
-        </div>
-        <div>
-          <div className="font-bold text-white mb-2">Resources</div>
-          <ul>
-            <li><a href="/blog" className="hover:text-electric-lime">Blog</a></li>
-            <li><a href="/docs" className="hover:text-electric-lime">Documentation</a></li>
-            <li><a href="/api" className="hover:text-electric-lime">API</a></li>
-          </ul>
-        </div>
-        <div>
-          <div className="font-bold text-white mb-2">Legal</div>
-          <ul>
-            <li><a href="/privacy-policy" className="hover:text-electric-lime">Privacy Policy</a></li>
-            <li><a href="/terms-of-service" className="hover:text-electric-lime">Terms of Service</a></li>
-          </ul>
-        </div>
-        <div>
-          <div className="font-bold text-white mb-2">Connect</div>
-          <ul>
-            <li><a href="https://twitter.com/thekpcompany" target="_blank" rel="noopener noreferrer" className="hover:text-electric-lime">Twitter</a></li>
-            <li><a href="https://linkedin.com/company/thekpcompany" target="_blank" rel="noopener noreferrer" className="hover:text-electric-lime">LinkedIn</a></li>
-            <li><a href="https://github.com/thekpcompany" target="_blank" rel="noopener noreferrer" className="hover:text-electric-lime">GitHub</a></li>
-          </ul>
-        </div>
-      </div>
-      {/* Newsletter Signup */}
-      <div className="max-w-6xl mx-auto mt-8">
-        <form className="flex flex-col sm:flex-row items-center justify-center gap-4" action="#" onSubmit={(e) => e.preventDefault()} aria-label="Newsletter signup">
-          <label htmlFor="newsletter-email" className="sr-only">Email address</label>
-          <input
-            id="newsletter-email"
-            type="email"
-            placeholder="Enter your email"
-            required
-            className="w-full sm:w-auto px-4 py-2 rounded bg-charcoal text-white border border-smoke focus:border-electric-lime focus:ring-2 focus:ring-electric-lime outline-none"
-          />
-          <button type="submit" className="px-6 py-2 bg-electric-lime text-deep-space font-semibold rounded hover:bg-neon-green transition">
-            Subscribe
-          </button>
-        </form>
-      </div>
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mt-8">
-        <div className="text-center text-xs text-light-gray">
-          Liberate. Create. Thrive. &copy; {new Date().getFullYear()} The KP Company
-        </div>
-        <div className="flex flex-col gap-2 text-sm">
-          <span className="font-semibold">Contact</span>
-          <a href="mailto:info.thekp@gmail.com" className="hover:underline">info.thekp@gmail.com</a>
-          <div className="flex gap-4 mt-2">
-            <a href="https://x.com/TheKP_Company" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-electric-blue transition-colors">
-              {/* Twitter SVG icon */}
+    <footer className="w-full px-6 pb-6 mt-16 relative z-10">
+      <div className="max-w-4xl mx-auto">
+        {/* Frosted glass container */}
+        <div className="bg-white/5 backdrop-blur-lg border-2 border-white/30 rounded-2xl p-8">
+          {/* Navigation Links */}
+          <nav className="mb-8">
+            <ul className="flex flex-wrap justify-center gap-8 text-white/80">
+              <li>
+                <a href="/" className="hover:text-white transition-colors font-medium">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="hover:text-white transition-colors font-medium">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="/ai-tools" className="hover:text-white transition-colors font-medium">
+                  AI Tools
+                </a>
+              </li>
+              <li>
+                <a href="/everyday-tools" className="hover:text-white transition-colors font-medium">
+                  Everyday Tools
+                </a>
+              </li>
+              <li>
+                <a href="/blog" className="hover:text-white transition-colors font-medium">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="hover:text-white transition-colors font-medium">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Direct Product Links */}
+          <div className="mb-8">
+            <h3 className="text-center text-white/60 text-sm font-medium mb-4">Our Products</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
+              {/* AI Tools */}
+              <div className="space-y-2">
+                <h4 className="text-white/80 text-xs font-semibold mb-2">AI Tools</h4>
+                <div className="space-y-1">
+                  <a 
+                    href="https://bookify.thekp.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
+                  >
+                    Bookify
+                  </a>
+                  <a 
+                    href="https://fictional.thekp.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
+                  >
+                    Fictional
+                  </a>
+                  <a 
+                    href="https://studentassist.thekp.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
+                  >
+                    Student Assist
+                  </a>
+                </div>
+              </div>
+              
+              {/* Everyday Tools Column 1 */}
+              <div className="space-y-2">
+                <h4 className="text-white/80 text-xs font-semibold mb-2">Utilities</h4>
+                <div className="space-y-1">
+                  <a 
+                    href="https://calciverice.thekp.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
+                  >
+                    CalciVerse
+                  </a>
+                  <a 
+                    href="https://metamorph.thekp.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
+                  >
+                    MetaMorph
+                  </a>
+                  <a 
+                    href="https://pdfalchemcy.thekp.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
+                  >
+                    PDF Alchemy
+                  </a>
+                </div>
+              </div>
+
+              {/* Everyday Tools Column 2 */}
+              <div className="space-y-2">
+                <h4 className="text-white/80 text-xs font-semibold mb-2">Tools</h4>
+                <div className="space-y-1">
+                  <a 
+                    href="https://originality.thekp.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
+                  >
+                    Originality
+                  </a>
+                  <a 
+                    href="https://qrartisan.thekp.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
+                  >
+                    QR Artisan
+                  </a>
+                  <a 
+                    href="https://chromacapture.thekp.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
+                  >
+                    ChromaCapture
+                  </a>
+                </div>
+              </div>
+
+              {/* Additional Tools */}
+              <div className="space-y-2">
+                <h4 className="text-white/80 text-xs font-semibold mb-2">Editors</h4>
+                <div className="space-y-1">
+                  <a 
+                    href="https://scribecanvas.thekp.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
+                  >
+                    ScribeCanvas
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex justify-center gap-4 mb-8">
+            <a 
+              href="https://facebook.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-all duration-300"
+              aria-label="Facebook"
+            >
+              <Facebook size={18} />
             </a>
-            <a href="https://www.linkedin.com/company/thekpcompany/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-electric-blue transition-colors">
-              {/* LinkedIn SVG icon */}
+            <a 
+              href="https://x.com/TheKP_Company" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-all duration-300"
+              aria-label="Twitter"
+            >
+              <Twitter size={18} />
             </a>
+            <a 
+              href="https://instagram.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-all duration-300"
+              aria-label="Instagram"
+            >
+              <Instagram size={18} />
+            </a>
+            <a 
+              href="https://www.linkedin.com/company/thekpcompany/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-all duration-300"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={18} />
+            </a>
+          </div>
+
+          {/* Newsletter Signup */}
+          <div className="mb-8">
+            <form 
+              className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto" 
+              action="#" 
+              onSubmit={(e) => e.preventDefault()} 
+              aria-label="Newsletter signup"
+            >
+              <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+              <input
+                id="newsletter-email"
+                type="email"
+                placeholder="Enter your email"
+                required
+                className="flex-1 w-full sm:w-auto px-4 py-2.5 rounded-full bg-white/10 backdrop-blur-sm text-white border border-white/30 focus:border-electric-lime focus:ring-2 focus:ring-electric-lime/50 outline-none placeholder-white/60 text-sm"
+              />
+              <button 
+                type="submit" 
+                className="px-6 py-2.5 bg-white/20 backdrop-blur-sm text-white font-medium rounded-full hover:bg-white/30 transition-all duration-300 border border-white/30 hover:border-white/50 text-sm"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+
+          {/* Copyright */}
+          <div className="text-center">
+            <p className="text-white/60 text-sm">
+              © {new Date().getFullYear()} The KP Company. All rights reserved.
+            </p>
           </div>
         </div>
       </div>

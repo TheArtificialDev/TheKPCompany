@@ -27,7 +27,7 @@ export default function SocialProofSection() {
   const supportRef = useCountUp(24);
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-r from-charcoal to-smoke">
+    <section className="py-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-h2 font-semibold mb-12 text-white">
           Trusted by Creators Worldwide
