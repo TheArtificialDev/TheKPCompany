@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useOnClickOutside } from "usehooks-ts";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 
@@ -25,7 +24,6 @@ type TabItem = Tab | Separator;
 interface ExpandableTabsProps {
   tabs: TabItem[];
   className?: string;
-  activeColor?: string;
   onChange?: (index: number | null) => void;
   activeIndex?: number | null;
 }
@@ -54,7 +52,6 @@ const transition = { delay: 0.05, type: "spring" as const, bounce: 0, duration: 
 export function ExpandableTabs({
   tabs,
   className,
-  activeColor = "text-electric-lime",
   onChange,
   activeIndex = null,
 }: ExpandableTabsProps) {

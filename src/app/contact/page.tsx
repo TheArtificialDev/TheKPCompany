@@ -36,7 +36,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-body-lg text-white/80 mb-12 leading-relaxed">
               Ready to liberate your creativity? Have questions about our tools? 
-              We'd love to hear from you and help you on your creative journey.
+              We&apos;d love to hear from you and help you on your creative journey.
             </p>
             
             {/* Contact Information Grid */}
@@ -91,7 +91,7 @@ export default function ContactPage() {
                 <h3 className="text-h4 font-semibold text-electric-lime mb-2">Response Time</h3>
                 <p className="text-white/80 text-sm">
                   We typically respond within 24-48 hours. For urgent matters, 
-                  please mention "URGENT" in your subject line.
+                  please mention &quot;URGENT&quot; in your subject line.
                 </p>
               </div>
             </div>

@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer() {
@@ -11,9 +12,9 @@ export default function Footer() {
           <nav className="mb-8">
             <ul className="flex flex-wrap justify-center gap-8 text-white/80">
               <li>
-                <a href="/" className="hover:text-white transition-colors font-medium">
+                <Link href="/" className="hover:text-white transition-colors font-medium">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="/about" className="hover:text-white transition-colors font-medium">

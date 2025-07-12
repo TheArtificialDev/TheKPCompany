@@ -79,7 +79,7 @@ export default function BlogPage() {
             <div className="p-8 bg-white/5 backdrop-blur-lg border-2 border-white/30 rounded-xl">
               <div className="text-h4 text-electric-lime mb-4">Coming Soon</div>
               <p className="text-white/80">
-                We're crafting insightful content to help you master the art of AI-assisted creativity. 
+                We&apos;re crafting insightful content to help you master the art of AI-assisted creativity. 
                 Subscribe to our newsletter to be the first to know when we launch!
               </p>
             </div>
