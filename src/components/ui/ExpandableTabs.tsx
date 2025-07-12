@@ -36,10 +36,10 @@ const buttonVariants = {
     paddingLeft: "1rem",
     paddingRight: "1rem",
   },
-  animate: (isSelected: boolean) => ({
-    gap: isSelected ? ".75rem" : 0,
-    paddingLeft: isSelected ? "1.25rem" : "1rem",
-    paddingRight: isSelected ? "1.25rem" : "1rem",
+  animate: (isExpanded: boolean) => ({
+    gap: isExpanded ? ".75rem" : 0,
+    paddingLeft: isExpanded ? "1.25rem" : "1rem",
+    paddingRight: isExpanded ? "1.25rem" : "1rem",
   }),
 };
 
@@ -49,7 +49,7 @@ const spanVariants = {
   exit: { width: 0, opacity: 0 },
 };
 
-const transition = { delay: 0.1, type: "spring" as const, bounce: 0, duration: 0.6 };
+const transition = { delay: 0.05, type: "spring" as const, bounce: 0, duration: 0.8 };
 
 export function ExpandableTabs({
   tabs,
@@ -59,6 +59,7 @@ export function ExpandableTabs({
   activeIndex = null,
 }: ExpandableTabsProps) {
   const [selected, setSelected] = React.useState<number | null>(activeIndex);
+  const [hovered, setHovered] = React.useState<number | null>(null);
   const outsideClickRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -100,6 +101,8 @@ export function ExpandableTabs({
 
         const Icon = tab.icon;
         const isSelected = selected === index;
+        const isHovered = hovered === index;
+        const isExpanded = isSelected || isHovered;
         
         return (
           <motion.button
@@ -107,8 +110,10 @@ export function ExpandableTabs({
             variants={buttonVariants}
             initial={false}
             animate="animate"
-            custom={isSelected}
+            custom={isExpanded}
             onClick={() => handleSelect(index, tab.href)}
+            onMouseEnter={() => setHovered(index)}
+            onMouseLeave={() => setHovered(null)}
             transition={transition}
             className={cn(
               "relative flex items-center rounded-xl px-5 py-3 text-base font-semibold transition-colors duration-300",
@@ -119,7 +124,7 @@ export function ExpandableTabs({
           >
             <Icon size={22} />
             <AnimatePresence initial={false}>
-              {isSelected && (
+              {isExpanded && (
                 <motion.span
                   variants={spanVariants}
                   initial="initial"

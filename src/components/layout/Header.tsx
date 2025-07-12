@@ -1,5 +1,4 @@
 "use client";
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { ExpandableTabs } from '@/components/ui/ExpandableTabs';
@@ -36,26 +35,21 @@ export default function Header() {
   const activeIndex = navTabs.findIndex(tab => pathname.startsWith(tab.href));
 
   return (
-    showNav ? (
-      <header
-        className={
-          "fixed left-1/2 top-8 transform -translate-x-1/2 z-50 transition-all duration-300 opacity-100 pointer-events-auto"
-        }
-        aria-hidden={!showNav}
-        style={{ width: 'min(98vw, 1200px)' }}
-      >
-        <div className="w-full flex flex-col md:flex-row items-center justify-between md:justify-center relative gap-4">
-          <div className="font-bold text-2xl tracking-tight text-white drop-shadow-lg select-none md:absolute md:left-0">
-            <Link href="/">The KP Company</Link>
-          </div>
-          <div className="flex justify-center flex-1">
-            <ExpandableTabs 
-              tabs={navTabs}
-              activeIndex={activeIndex >= 0 ? activeIndex : null}
-            />
-          </div>
-        </div>
-      </header>
-    ) : null
+    <header
+      className={`fixed left-1/2 top-8 transform -translate-x-1/2 z-50 transition-all duration-500 ease-out ${
+        showNav 
+          ? 'opacity-100 pointer-events-auto translate-y-0' 
+          : 'opacity-0 pointer-events-none -translate-y-4'
+      }`}
+      aria-hidden={!showNav}
+      style={{ width: 'min(98vw, 1200px)' }}
+    >
+      <div className="w-full flex justify-center">
+        <ExpandableTabs 
+          tabs={navTabs}
+          activeIndex={activeIndex >= 0 ? activeIndex : null}
+        />
+      </div>
+    </header>
   );
 }

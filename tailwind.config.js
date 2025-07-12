@@ -22,6 +22,8 @@ module.exports = {
       fontFamily: {
         'inter': ['var(--font-inter)', 'Inter', 'sans-serif'],
         'jetbrains-mono': ['var(--font-jetbrains-mono)', 'JetBrains Mono', 'monospace'],
+        'space-mono': ['var(--font-space-mono)', 'Space Mono', 'monospace'],
+        'headings': ['var(--font-space-mono)', 'Space Mono', 'monospace'],
       },
       fontSize: {
         'h1': ['4.5rem', { lineHeight: '1.1', fontWeight: '700', letterSpacing: '-0.02em' }],
