@@ -1,4 +1,7 @@
+'use client';
 import Link from 'next/link';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const tools = [
 	{
@@ -123,17 +126,66 @@ const tools = [
 ];
 
 export default function EverydayToolsGridSection() {
+	const ref = useRef(null);
+	const isInView = useInView(ref, { once: false, amount: 0.3 });
+
+	const titleVariants = {
+		hidden: { opacity: 0, y: 50 },
+		visible: { 
+			opacity: 1, 
+			y: 0, 
+			transition: { 
+				duration: 0.8, 
+				ease: [0.22, 1, 0.36, 1] as const
+			} 
+		}
+	};
+
+	const cardVariants = {
+		hidden: { 
+			opacity: 0, 
+			y: 80, 
+			scale: 0.9,
+			backgroundColor: "rgba(255, 255, 255, 0.1)" 
+		},
+		visible: (i: number) => ({
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			backgroundColor: "rgba(255, 255, 255, 0.1)",
+			transition: {
+				duration: 0.8,
+				ease: [0.22, 1, 0.36, 1] as const,
+				delay: i * 0.1
+			}
+		})
+	};
+
 	return (
-		<section className="py-20 px-6">
+		<section className="py-20 px-6" ref={ref}>
 			<div className="max-w-6xl mx-auto">
-				<h2 className="text-h2 font-semibold text-center mb-16 text-white">
+				<motion.h2 
+					className="text-h2 font-semibold text-center mb-16 text-white"
+					variants={titleVariants}
+					initial="hidden"
+					animate={isInView ? "visible" : "hidden"}
+				>
 					Everyday Tools
-				</h2>
+				</motion.h2>
 				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-					{tools.map((tool) => (
-						<div
+					{tools.map((tool, index) => (
+						<motion.div
 							key={tool.name}
-							className="flex flex-col items-center p-6 rounded-lg bg-white/10 backdrop-blur-lg border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-md"
+							className="flex flex-col items-center p-6 rounded-lg backdrop-blur-lg border border-white/20 shadow-md"
+							variants={cardVariants}
+							initial="hidden"
+							animate={isInView ? "visible" : "hidden"}
+							whileHover={{ 
+								scale: 1.05, 
+								backgroundColor: "rgba(255, 255, 255, 0.2)",
+								transition: { duration: 0.3 }
+							}}
+							custom={index}
 						>
 							<div className="mb-3">{tool.icon}</div>
 							<h3 className="text-h4 font-medium mb-1 text-white">
@@ -150,7 +202,7 @@ export default function EverydayToolsGridSection() {
 							>
 								Open
 							</Link>
-						</div>
+						</motion.div>
 					))}
 				</div>
 			</div>
