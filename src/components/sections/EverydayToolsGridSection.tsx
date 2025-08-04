@@ -41,7 +41,7 @@ const tools = [
 	{
 		name: 'PDF Alchemy',
 		desc: 'PDF editor',
-		url: 'https://pdfalchemcy.thekp.in',
+		url: '/tools/pdfalchemcy',
 		icon: (
 			<svg
 				className="w-8 h-8 text-neon-green"
@@ -75,7 +75,7 @@ const tools = [
 	{
 		name: 'QR Artisan',
 		desc: 'QR code generator',
-		url: 'https://qrartisan.thekp.in',
+		url: '/tools/qrartisan',
 		icon: (
 			<svg
 				className="w-8 h-8 text-electric-lime"
@@ -92,7 +92,7 @@ const tools = [
 	{
 		name: 'ChromaCapture',
 		desc: 'Color extractor',
-		url: 'https://chromacapture.thekp.in',
+		url: '/tools/chromacapture',
 		icon: (
 			<svg
 				className="w-8 h-8 text-electric-blue"

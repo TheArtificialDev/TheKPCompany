@@ -31,7 +31,7 @@ const tools = [
   { 
     name: 'PDF Alchemy', 
     desc: 'Powerful PDF editor and manipulation tool.', 
-    href: 'https://pdfalchemcy.thekp.in',
+    href: '/tools/pdfalchemcy',
     icon: '📄'
   },
   { 
@@ -43,13 +43,13 @@ const tools = [
   { 
     name: 'QR Artisan', 
     desc: 'Beautiful QR code generator with customization.', 
-    href: 'https://qrartisan.thekp.in',
+    href: '/tools/qrartisan',
     icon: '📱'
   },
   { 
     name: 'ChromaCapture', 
     desc: 'Extract colors from images with precision.', 
-    href: 'https://chromacapture.thekp.in',
+    href: '/tools/chromacapture',
     icon: '🎨'
   },
   { 

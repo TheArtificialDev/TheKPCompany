@@ -3,7 +3,6 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { Space_Mono } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import ClientBackground from "@/components/layout/ClientBackground";
 import { organizationSchema, websiteSchema } from '@/lib/structuredData';
 import "./globals.css";
 
@@ -56,8 +55,16 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased font-inter text-white bg-deep-space">
-        {/* Global fixed animated background */}
-        <ClientBackground />
+        {/* Simple CSS background */}
+        <div className="fixed inset-0 bg-deep-space z-0">
+          <div 
+            className="absolute inset-0 opacity-20 animate-pulse"
+            style={{
+              backgroundImage: `radial-gradient(circle at 20px 20px, #00FF88 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }}
+          />
+        </div>
         {/* App content above background */}
         <div className="relative z-10 min-h-screen">
           <Header />
