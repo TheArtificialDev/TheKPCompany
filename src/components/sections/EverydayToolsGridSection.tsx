@@ -24,7 +24,7 @@ const tools = [
 	{
 		name: 'MetaMorph',
 		desc: 'File converter',
-		url: 'https://metamorph.thekp.in',
+		url: '/tools/metamorph',
 		icon: (
 			<svg
 				className="w-8 h-8 text-amber"
@@ -196,8 +196,8 @@ export default function EverydayToolsGridSection() {
 							</p>
 							<Link
 								href={tool.url}
-								target="_blank"
-								rel="noopener noreferrer"
+								target={tool.url.startsWith('http') ? "_blank" : undefined}
+								rel={tool.url.startsWith('http') ? "noopener noreferrer" : undefined}
 								className="px-4 py-2 bg-electric-lime text-deep-space font-semibold rounded hover:bg-neon-green transition"
 							>
 								Open

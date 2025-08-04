@@ -25,7 +25,7 @@ const tools = [
   { 
     name: 'MetaMorph', 
     desc: 'Universal file converter for all your format needs.', 
-    href: 'https://metamorph.thekp.in',
+    href: '/tools/metamorph',
     icon: '🔄'
   },
   { 
@@ -95,8 +95,8 @@ export default function EverydayToolsPage() {
               <Link 
                 key={tool.name} 
                 href={tool.href} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+                target={tool.href.startsWith('http') ? "_blank" : undefined}
+                rel={tool.href.startsWith('http') ? "noopener noreferrer" : undefined}
                 className="p-8 bg-white/5 backdrop-blur-lg border-2 border-white/30 rounded-xl hover:bg-white/10 hover:border-electric-lime/50 transition-all duration-300 hover:scale-105 group"
               >
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
