@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import MetaMorphConverter from '@/components/tools/MetaMorphConverter';
+import Link from 'next/link';
+import { LazyMetaMorphConverter } from '@/components/tools/LazyComponents';
 
 export const dynamic = 'force-dynamic'
 
@@ -19,33 +20,38 @@ export const metadata: Metadata = {
 
 export default function MetaMorphPage() {
   return (
-    <main className="text-white min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center px-4 py-8 overflow-hidden">
-        <div
-          className="relative z-10 rounded-3xl bg-white/5 backdrop-blur-lg shadow-2xl flex flex-col items-center border-2 border-white/30"
+    <div className="min-h-screen text-white relative">
+      {/* Background animation matching main site */}
+      <div className="fixed inset-0 bg-deep-space z-0">
+        <div 
+          className="absolute inset-0 opacity-20 animate-pulse"
           style={{
-            width: '90vw',
-            height: '90vh',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: 'auto',
+            backgroundImage: `radial-gradient(circle at 20px 20px, #00FF88 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
           }}
-        >
-          <div className="w-full max-w-4xl mx-auto text-center px-6 sm:px-12">
-            <div className="text-6xl mb-6">🔄</div>
-            <h1 className="text-h1 font-bold mb-6 bg-gradient-to-r from-electric-lime to-neon-green bg-clip-text text-transparent leading-tight">
-              MetaMorph
-            </h1>
-            <p className="text-body-lg text-white/80 max-w-2xl mx-auto mb-12 leading-relaxed">
-              Universal file converter for all your format needs. Transform images, documents, text files, audio, video, spreadsheets, presentations, and more with just a few clicks.
-            </p>
-            
-            <MetaMorphConverter />
-          </div>
+        />
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Back Button */}
+        <div className="absolute top-6 left-6 z-20">
+          <Link 
+            href="/everyday-tools"
+            className="inline-flex items-center gap-2 bg-charcoal/80 backdrop-blur-lg text-white px-4 py-2 rounded-lg border border-smoke hover:bg-charcoal hover:border-electric-lime transition-all duration-300"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="m12 19-7-7 7-7"/>
+              <path d="M19 12H5"/>
+            </svg>
+            Back to Tools
+          </Link>
         </div>
-      </section>
-    </main>
-  );
+
+        <div className="max-w-6xl mx-auto px-4 py-24">
+          <LazyMetaMorphConverter />
+        </div>
+      </div>
+    </div>
+  )
 }

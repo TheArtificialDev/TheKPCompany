@@ -79,7 +79,7 @@ export default function SocialProofSection() {
             <div className="text-body text-light-gray">Uptime</div>
           </div>
           <div>
-            <div className="text-h1 font-bold text-electric-lime mb-2" ref={supportRef}>24 hours</div>
+            <div className="text-h1 font-bold text-electric-lime mb-2" ref={supportRef}>24/h</div>
             <div className="text-body text-light-gray">Support</div>
           </div>
         </div>

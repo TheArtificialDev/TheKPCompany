@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
-import ChromaCaptureExtractor from '@/components/tools/ChromaCaptureExtractor'
+import Link from 'next/link'
+import { LazyChromaCaptureExtractor } from '@/components/tools/LazyComponents'
 
 export const dynamic = 'force-dynamic'
 
@@ -32,8 +33,35 @@ export const metadata: Metadata = {
 
 export default function ChromaCapturePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-deep-space via-charcoal to-smoke text-white">
-      {/* Hero Section */}
+    <div className="min-h-screen text-white relative">
+      {/* Background animation matching main site */}
+      <div className="fixed inset-0 bg-deep-space z-0">
+        <div 
+          className="absolute inset-0 opacity-20 animate-pulse"
+          style={{
+            backgroundImage: `radial-gradient(circle at 20px 20px, #00FF88 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+          }}
+        />
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Back Button */}
+        <div className="absolute top-6 left-6 z-20">
+          <Link 
+            href="/everyday-tools"
+            className="inline-flex items-center gap-2 bg-charcoal/80 backdrop-blur-lg text-white px-4 py-2 rounded-lg border border-smoke hover:bg-charcoal hover:border-electric-lime transition-all duration-300"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="m12 19-7-7 7-7"/>
+              <path d="M19 12H5"/>
+            </svg>
+            Back to Tools
+          </Link>
+        </div>
+
+        {/* Hero Section */}
       <section className="pt-24 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-electric-lime/10 text-electric-lime px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -79,7 +107,7 @@ export default function ChromaCapturePage() {
       {/* Tool Section */}
       <section className="pb-24 px-4">
         <div className="max-w-6xl mx-auto">
-          <ChromaCaptureExtractor />
+          <LazyChromaCaptureExtractor />
         </div>
       </section>
 
@@ -121,9 +149,10 @@ export default function ChromaCapturePage() {
               <h3 className="text-xl font-semibold mb-2">Precision Picker</h3>
               <p className="text-light-gray">Hover anywhere on your image to get the exact color at that pixel. Zoom in for ultra-precise selection.</p>
             </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   )
 }

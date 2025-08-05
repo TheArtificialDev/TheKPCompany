@@ -39,7 +39,7 @@ const tools = [
   { 
     name: 'Originality', 
     desc: 'Advanced plagiarism checker for authentic content.', 
-    href: 'https://originality.thekp.in',
+    href: '/tools/maintenance',
     icon: '🔍'
   },
   { 

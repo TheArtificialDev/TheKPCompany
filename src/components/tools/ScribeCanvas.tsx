@@ -24,11 +24,6 @@ export default function ScribeCanvas() {
       editorRef.current.innerHTML = '<p class="placeholder-text" style="color: #8E8E93; font-style: italic;">Start writing your masterpiece...</p>'
     }
   }, [])
-  useEffect(() => {
-    if (editorRef.current && !editorRef.current.innerHTML) {
-      editorRef.current.innerHTML = '<p class="placeholder-text" style="color: #8E8E93; font-style: italic;">Start writing your masterpiece...</p>'
-    }
-  }, [])
 
   // Update content and statistics
   const handleContentChange = useCallback(() => {
