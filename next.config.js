@@ -4,6 +4,10 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   
+  // Skip static generation for problematic routes
+  skipTrailingSlashRedirect: true,
+  skipMiddlewareUrlNormalize: true,
+  
   // Reduce development logging
   logging: {
     fetches: {
@@ -11,12 +15,7 @@ const nextConfig = {
     },
   },
   
-  // Optimal configuration for Vercel deployment with client components
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
-  
-  // Image optimization
+  // Image optimization for Vercel
   images: {
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 60,
