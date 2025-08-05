@@ -7,7 +7,7 @@ const tools = [
 	{
 		name: 'CalciVerse',
 		desc: 'Scientific calculator',
-		url: 'https://calciverice.thekp.in',
+		url: '/tools/calciverice',
 		icon: (
 			<svg
 				className="w-8 h-8 text-electric-blue"

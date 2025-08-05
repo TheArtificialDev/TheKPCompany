@@ -84,9 +84,7 @@ export default function Footer() {
                 <h4 className="text-white/80 text-xs font-semibold mb-2">Utilities</h4>
                 <div className="space-y-1">
                   <a 
-                    href="https://calciverice.thekp.in" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                    href="/tools/calciverice" 
                     className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
                   >
                     CalciVerse

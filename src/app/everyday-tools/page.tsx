@@ -21,7 +21,7 @@ const tools = [
   { 
     name: 'CalciVerse', 
     desc: 'Advanced scientific calculator for complex computations.', 
-    href: 'https://calciverice.thekp.in',
+    href: '/tools/calciverice',
     icon: '🧮'
   },
   { 
