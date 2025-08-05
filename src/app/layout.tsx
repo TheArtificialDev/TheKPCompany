@@ -23,6 +23,8 @@ const spaceMono = Space_Mono({
   style: ["normal", "italic"],
 });
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: "The KP Company - AI-Powered Creative Tools | Frictionless Creativity",
   description:

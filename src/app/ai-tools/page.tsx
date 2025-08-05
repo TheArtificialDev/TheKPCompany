@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'AI Tools - The KP Company | Frictionless Creativity',
   description: 'Explore The KP Company\'s suite of AI-powered creative tools: Bookify, Fictional, Student Assist, and more.',

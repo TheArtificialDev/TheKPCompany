@@ -7,6 +7,8 @@ import EverydayToolsGridSection from '@/components/sections/EverydayToolsGridSec
 import SocialProofSection from '@/components/sections/SocialProofSection';
 import FinalCTASection from '@/components/sections/FinalCTASection';
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'The KP Company - AI-Powered Creative Tools | Frictionless Creativity',
   description: 'Liberate your creativity with AI-powered tools for writing, research, and productivity. Try Bookify, Fictional, Student Assist, and more everyday utilities for free.',

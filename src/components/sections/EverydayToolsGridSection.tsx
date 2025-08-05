@@ -109,7 +109,7 @@ const tools = [
 	{
 		name: 'ScribeCanvas',
 		desc: 'Rich text editor',
-		url: 'https://scribecanvas.thekp.in',
+		url: '/tools/scribecanvas',
 		icon: (
 			<svg
 				className="w-8 h-8 text-amber"

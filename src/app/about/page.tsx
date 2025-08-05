@@ -7,6 +7,8 @@ import AboutApproachSection from '@/components/sections/AboutApproachSection';
 import AboutTeamSection from '@/components/sections/AboutTeamSection';
 import AboutContactSection from '@/components/sections/AboutContactSection';
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'About The KP Company - Liberating Creativity Through AI Innovation',
   description: 'Learn about The KP Company\'s mission to eliminate friction from creative workflows through thoughtful AI tools and everyday utilities.',

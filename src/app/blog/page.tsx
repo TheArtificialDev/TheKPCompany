@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Creative AI Blog - Tips, Tutorials & Industry Insights | The KP Company',
   description: 'Discover AI creativity tips, productivity hacks, and tool tutorials. Learn how to optimize your creative workflow with expert insights.',

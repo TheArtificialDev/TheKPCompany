@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Everyday Tools - The KP Company | Productivity & Utility Tools',
   description: 'Explore The KP Company\'s collection of everyday productivity tools: CalciVerse, MetaMorph, PDF Alchemy, Originality, QR Artisan, and more.',
@@ -55,7 +57,7 @@ const tools = [
   { 
     name: 'ScribeCanvas', 
     desc: 'Feature-rich text editor for writers.', 
-    href: 'https://scribecanvas.thekp.in',
+    href: '/tools/scribecanvas',
     icon: '✍️'
   },
 ];

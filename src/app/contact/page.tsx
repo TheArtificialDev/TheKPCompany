@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Contact The KP Company - Get in Touch | AI Creative Tools Support',
   description: 'Contact The KP Company for support, partnerships, or questions about our AI-powered creative tools. We\'re here to help liberate your creativity.',

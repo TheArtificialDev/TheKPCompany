@@ -6,6 +6,11 @@ const nextConfig = {
       fullUrl: false,
     },
   },
+  
+  // Optimal configuration for Vercel deployment with client components
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 };
 
 export default nextConfig;

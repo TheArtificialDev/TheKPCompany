@@ -92,17 +92,13 @@ export default function Footer() {
                     CalciVerse
                   </a>
                   <a 
-                    href="https://metamorph.thekp.in" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                    href="/tools/metamorph" 
                     className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
                   >
                     MetaMorph
                   </a>
                   <a 
-                    href="https://pdfalchemcy.thekp.in" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                    href="/tools/pdfalchemcy" 
                     className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
                   >
                     PDF Alchemy
@@ -123,17 +119,13 @@ export default function Footer() {
                     Originality
                   </a>
                   <a 
-                    href="https://qrartisan.thekp.in" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                    href="/tools/qrartisan" 
                     className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
                   >
                     QR Artisan
                   </a>
                   <a 
-                    href="https://chromacapture.thekp.in" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                    href="/tools/chromacapture" 
                     className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
                   >
                     ChromaCapture
@@ -146,9 +138,7 @@ export default function Footer() {
                 <h4 className="text-white/80 text-xs font-semibold mb-2">Editors</h4>
                 <div className="space-y-1">
                   <a 
-                    href="https://scribecanvas.thekp.in" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                    href="/tools/scribecanvas" 
                     className="block text-white/60 hover:text-electric-lime transition-colors text-xs"
                   >
                     ScribeCanvas

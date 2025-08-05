@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import MetaMorphConverter from '@/components/tools/MetaMorphConverter';
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'MetaMorph - Universal File Converter | The KP Company',
   description: 'Convert files between any format with MetaMorph. Support for images, documents, text files, audio, video, spreadsheets, presentations, and archives. Fast, secure, and free file conversion.',

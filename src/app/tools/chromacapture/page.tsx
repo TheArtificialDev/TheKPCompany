@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import ChromaCaptureExtractor from '@/components/tools/ChromaCaptureExtractor'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'ChromaCapture - AI Color Extraction Tool | The KP Company',
   description: 'Extract colors from any image instantly. Get top 5 color recommendations, hover to detect colors anywhere on your image, and zoom for precise selection. Free AI-powered color extraction tool.',

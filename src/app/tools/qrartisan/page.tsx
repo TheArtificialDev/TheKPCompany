@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import QRCodeGenerator from '@/components/tools/QRCodeGenerator'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'QR Artisan - Beautiful QR Code Generator | The KP Company',
   description: 'Create stunning, customizable QR codes with colors, rounded corners, and custom logos. Download in PNG or JPG format. Free QR code generator with advanced design options.',

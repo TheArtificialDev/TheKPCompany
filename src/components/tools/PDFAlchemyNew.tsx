@@ -179,7 +179,7 @@ export default function PDFAlchemy() {
         newPdf.addPage(copiedPage)
 
         const pdfBytes = await newPdf.save()
-        const blob = new Blob([pdfBytes], { type: 'application/pdf' })
+        const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' })
         saveAs.saveAs(blob, `${pdfFile.name.replace('.pdf', '')}_page_${pagesToExtract[i]}.pdf`)
       }
 
@@ -218,7 +218,7 @@ export default function PDFAlchemy() {
       }
 
       const pdfBytes = await mergedPdf.save()
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' })
+      const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' })
       const mergedFileName = `merged_${Date.now()}.pdf`
       saveAs.saveAs(blob, mergedFileName)
 
@@ -250,7 +250,7 @@ export default function PDFAlchemy() {
         addDefaultPage: false,
       })
 
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' })
+      const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' })
       const compressedFileName = `${pdfFile.name.replace('.pdf', '')}_compressed.pdf`
       saveAs.saveAs(blob, compressedFileName)
 
